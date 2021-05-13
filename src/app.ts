@@ -1,6 +1,8 @@
 import express, {Application} from 'express';
 import morgan from 'morgan';
 
+import mainRouter from './routes/main.routes';
+
 export class App {
     private app: Application;
     private PORT?: number | string;
@@ -11,15 +13,20 @@ export class App {
         this.PORT = port;
         this.settings();
         this.middlewares();
-    }
+        this.routes();
+    };
 
     settings(){
         this.app.set('port', this.PORT || process.env.PORT || 3000)
-    }
+    };
 
     middlewares(){
         this.app.use(morgan('dev'));
-    }
+    };
+
+    routes(){
+        this.app.use(mainRouter);
+    };
 
     async listen(){
         this.app.listen(this.app.get('port'), () => {
