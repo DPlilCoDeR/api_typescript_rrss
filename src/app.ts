@@ -1,7 +1,8 @@
 import express, {Application} from 'express';
 import morgan from 'morgan';
 
-import mainRouter from './routes/main.routes';
+import mainRouter from './routes/main.route';
+import postRouter from "./routes/post.route";
 
 export class App {
     private app: Application;
@@ -26,6 +27,7 @@ export class App {
 
     routes(){
         this.app.use(mainRouter);
+        this.app.use('/posts', postRouter)
     };
 
     async listen(){

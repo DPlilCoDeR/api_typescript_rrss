@@ -6,6 +6,6 @@ const router = Router();
 const controller = new MainController()
 
 router.route('/')
-    .get(controller.answer);
+    .get(controller.main);
 
 export default router
