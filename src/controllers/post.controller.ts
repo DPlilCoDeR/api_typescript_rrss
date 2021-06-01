@@ -12,15 +12,15 @@ export class MainController {
     }
 
     async getPosts(req: Request, res: Response){
-        const connection = await ConnectionDB();
-        const posts = await connection.query('SELECT * FROM posts')
+        const connection = await new ConnectionDB();
+        const posts = await connection.connection.query('SELECT * FROM posts')
         return res.json(posts)
     }
 
     async createPost(req: Request, res: Response){
-        const connection = await ConnectionDB();
+        const connection = await new ConnectionDB();
         const newPost: Post = req.body;
-        await connection.query('INSERT INTO posts SET ?', [newPost])
+        await connection.connection.query('INSERT INTO posts SET ?', [newPost])
         return res.json({
             message: 'Post created'
         });

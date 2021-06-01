@@ -1,13 +1,16 @@
 import { createPool } from 'mysql2/promise';
 
-export async function ConnectionDB() {
+export class ConnectionDB {
     
-    const connection = await createPool({
-        'host': 'localhost',
-        'user': 'root',
-        'database': 'cara_libro',
-        'connectionLimit': 10
-    });
+    connection;
 
-    return connection
+    constructor(){
+        this.connection = createPool({
+            'host': 'localhost',
+            'user': 'root',
+            'database': 'cara_libro',
+            'connectionLimit': 10
+        });
+    }
+
 }
