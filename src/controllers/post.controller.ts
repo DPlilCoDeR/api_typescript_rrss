@@ -4,12 +4,8 @@ import { ConnectionDB } from "../ConnectionDB";
 import  Post  from "../interfaces/Ipost.interface";
 
 
-export class MainController {
+export class PostController {
 
-
-    main(req: Request, res: Response){
-        res.json(`Welcome to Cara e' libro API`);
-    }
 
     async getPosts(req: Request, res: Response){
         const connection = await new ConnectionDB();

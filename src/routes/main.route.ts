@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import  { MainController }  from "../controllers/post.controller";
+import  { MainController }  from "../controllers/main.controller";
 
 const router = Router();
 const controller = new MainController()

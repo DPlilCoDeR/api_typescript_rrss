@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import { MainController } from "../controllers/post.controller";
+import { PostController } from "../controllers/post.controller";
 
 const router = Router();
-const controller = new MainController()
+const controller = new PostController()
 
 router.route('/')
     .get(controller.getPosts)
