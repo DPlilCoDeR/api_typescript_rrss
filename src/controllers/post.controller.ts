@@ -30,16 +30,17 @@ export class PostController {
         });
     }
 
-    async updatePost(req: Request, res: Response){
-        //const connection = new ConnectionDB();
-        const id = req.params.postId
-        console.log(id)
+    async updatePost(req: Request, res: Response) : Promise<Response>{
+        const connection = new ConnectionDB();
+        const updatedBodyPost = req.body;
+        const idPost = req.params.postId
+        await connection.connection.query('UPDATE posts set ? WHERE id = ?', [updatedBodyPost, idPost])
         return res.json({
-            response: 'Put works'
+            response: 'post Updated'
         })
     }
 
-    async deletePost(req: Request, res: Response){
+    async deletePost(req: Request, res: Response) : Promise<Response>{
         return res.json({
             message: 'delete works'
         })
