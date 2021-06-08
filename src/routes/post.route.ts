@@ -8,5 +8,6 @@ const controller = new PostController()
 router.route('/')
     .get(controller.getPosts)
     .post(controller.createPost)
+    .put(controller.updatePost)
 
 export default router;
